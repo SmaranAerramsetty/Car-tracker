@@ -1,0 +1,9 @@
+<span *ngFor = "let x of readingsInfoData">
+<agm-map  [latitude]="x.latitude" [longitude]="x.longitude" >
+  <agm-marker  [latitude]="x.latitude" [longitude]="x.longitude"></agm-marker>
+</agm-map>
+  <p class="pos"></p>
+</span>
+<div class="btn btn-link" [routerLink]="['/home']" >Back to vehicle Data Home Page</div>
+
+<div style="padding-left: 5px;"><button type="button" class="btn btn-dark" [routerLink]="['/feat']">Added Features</button></div>

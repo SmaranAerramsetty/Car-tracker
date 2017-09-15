@@ -1,0 +1,25 @@
+<h2 class="text-center">Vehicle Info</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>VIN</th>
+    <th>Make</th>
+    <th>Year</th>
+    <th>Red Line RPM</th>
+    <th>Max. Fuel Vol.</th>
+    <th>Last Service Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor = "let x of vehicleInfoData">
+    <td class="btn-link" [routerLink]="['/readings', x.vin]">{{x.vin}}</td>
+    <td>{{x.make}}</td>
+    <td>{{x.year}}</td>
+    <td>{{x.redlineRpm}}</td>
+    <td>{{x.maxFuelVolume}}</td>
+    <td>{{x.lastServiceDate}}</td>
+  </tr>
+  </tbody>
+</table>
+<hr><hr>
+<div style="padding-left: 5px;"><button type="button" class="btn btn-dark" [routerLink]="['/feat']">Added Features</button></div>

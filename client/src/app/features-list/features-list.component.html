@@ -1,0 +1,30 @@
+<form name="user-form" (submit)="featHandler()" #userForm="ngForm">
+
+  <div class="pad_class">
+
+  <div class="form-group">
+  <label for="options_list">Select Feature:</label>
+  <select id="options_list" #useroption="ngModel" required class="form-control" [(ngModel)]="selectedOption"
+          name="option">
+    <option [disabled]="true" [selected]="true" [value]="dummy">Select Feature</option>
+    <option *ngFor="let option of optionsList" [value]="option" >{{option}}</option>
+  </select>
+  <div *ngIf="useroption.errors && (useroption.dirty || useroption.touched)" class="error">
+    <p [hidden]="!useroption.errors.required" style="color: red">Feature is required</p>
+  </div>
+  </div>
+
+  <div class="form-group">
+    <label for="vin_label">Enter VIN:</label>
+    <input id='vin_label' #vinValue="ngModel" [(ngModel)]="enteredVin" placeholder="Enter Vin" required class="form-control" name="vin_value">
+    <div *ngIf="vinValue.errors && (vinValue.dirty || vinValue.touched)" class="error">
+      <p [hidden]="!vinValue.errors.required" style="color: red">VIN value is required</p>
+    </div>
+
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block" [disabled]="!userForm.valid" >Continue</button>
+  </div>
+
+</form>
+<div class="btn btn-link" [routerLink]="['/home']" >Back to vehicle Data Home Page</div>

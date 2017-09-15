@@ -1,0 +1,21 @@
+<h2 class="text-center">Alerts Info</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>VIN</th>
+    <th>Cause</th>
+    <th>Priority</th>
+    <th>TimeStamp</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor = "let x of alertInfo">
+    <td>{{x.carVin}}</td>
+    <td>{{x.cause}}</td>
+    <td>{{x.priority}}</td>
+    <td>{{x.timestamp}}</td>
+  </tr>
+  </tbody>
+</table>
+<hr><hr>
+<div style="padding-left: 5px;"><button type="button" class="btn btn-dark" [routerLink]="['/feat']">Added Features</button></div>

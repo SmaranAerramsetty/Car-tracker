@@ -1,0 +1,62 @@
+<ng-template #on_content><td class="alert" >ON</td></ng-template>
+<ng-template #off_content><td>OFF</td></ng-template>
+<ng-template #low_content><td class="alert">LOW</td></ng-template>
+<ng-template #okay_content><td>OKAY</td></ng-template>
+
+
+
+
+<h2 class="text-center">Readings Info</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>VIN</th>
+    <th>Fuel Volume</th>
+    <th>Speed</th>
+    <th>Engine HP</th>
+    <th>Check Engine Lights</th>
+    <th>Engine Coolant</th>
+    <th>Cruise Control</th>
+    <th>Engine RPM</th>
+    <th>Front Left</th>
+    <th>Front Right</th>
+    <th>Rear Left</th>
+    <th>Rear Right</th>
+    <th>Time Stamp</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor = "let x of readingsInfoData">
+    <td>{{x.vin}}</td>
+    <td>{{x.fuelVolume}}</td>
+    <td>{{x.speed}}</td>
+    <td>{{x.engineHp}}</td>
+    <div *ngIf="x.checkEngineLightOn;then on_content else off_content"></div>
+
+  <div *ngIf="x.engineCoolantLow;then low_content else okay_content"></div>
+
+  <div *ngIf="x.cruiseControlOn;then on_content else off_content"></div>
+    <ng-template #fl_okay><td>{{x.tires.frontLeft}}</td></ng-template>
+    <ng-template #fl_bad ><td class="alert">{{x.tires.frontLeft}}</td></ng-template>
+    <ng-template #fr_okay><td>{{x.tires.frontRight}}</td></ng-template>
+    <ng-template #fr_bad ><td class="alert">{{x.tires.frontRight}}</td></ng-template>
+    <ng-template #rl_okay><td>{{x.tires.rearLeft}}</td></ng-template>
+    <ng-template #rl_bad ><td class="alert">{{x.tires.rearLeft}}</td></ng-template>
+    <ng-template #rr_okay><td>{{x.tires.rearRight}}</td></ng-template>
+    <ng-template #rr_bad ><td class="alert">{{x.tires.rearRight}}</td></ng-template>
+
+    <td>{{x.engineRpm}}</td>
+    <div *ngIf="x.tires.frontLeft<32||x.tires.frontLeft>36;then fl_bad else fl_okay"></div>
+    <div *ngIf="x.tires.frontRight<32||x.tires.frontRight>36;then fr_bad else fr_okay"></div>
+    <div *ngIf="x.tires.rearLeft<32||x.tires.rearLeft>36;then rl_bad else rl_okay"></div>
+    <div *ngIf="x.tires.rearRight<32||x.tires.rearRight>36;then rr_bad else rr_okay"></div>
+
+
+    <td>{{x.timestamp}}</td>
+  </tr>
+  </tbody>
+</table>
+<hr><hr>
+<div class="btn btn-link" [routerLink]="['/home']" >Back to vehicle Data Home Page</div>
+
+<div style="padding-left: 5px;"><button type="button" class="btn btn-dark" [routerLink]="['/feat']" >Added Features</button></div>
